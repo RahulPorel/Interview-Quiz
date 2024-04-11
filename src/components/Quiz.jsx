@@ -34,7 +34,7 @@ const Quiz = ({ AllQuestions }) => {
       ans
         ? {
             ...prevVal,
-            score: prevVal.score + 5,
+            score: prevVal.score + 1,
             correctAnswer: prevVal.correctAnswer + 1,
           }
         : {
@@ -50,6 +50,13 @@ const Quiz = ({ AllQuestions }) => {
       setShowResult(true);
     }
   };
+
+  const handleTryAgain = () => {
+    // it will all things to it's default value
+    setResult(resultInitalState);
+    setShowResult(false);
+  };
+
   return (
     <div className="quiz-container">
       {!showResult ? (
@@ -87,7 +94,25 @@ const Quiz = ({ AllQuestions }) => {
           )}
         </>
       ) : (
-        <div>Result</div>
+        <div className="result">
+          Result
+          <h3></h3>
+          <p>
+            Total Questions: <span> {AllQuestions.length}</span>
+          </p>
+          <p>
+            Total Score: <span> {result.score}</span>
+          </p>
+          <p>
+            Correct Ans: <span> {result.correctAnswer}</span>
+          </p>
+          <p>
+            Wrong Ans: <span> {result.wrongAnswer}</span>
+          </p>
+          <button onClick={handleTryAgain} className=" tryAgainBtn">
+            Try Again
+          </button>
+        </div>
       )}
     </div>
   );

@@ -57,7 +57,8 @@ $foreground: #2d264b;
 
     justify-content: flex-end;
   }
-  .nextQuestionBtn {
+  .nextQuestionBtn,
+  .tryAgainBtn {
     background: linear-gradient(0deg, $primary 0.03%, $accent);
     border-radius: 9px;
     font-size: 18px;
@@ -72,6 +73,23 @@ $foreground: #2d264b;
       background: $bg-accent;
       color: $disabled;
       cursor: not-allowed;
+    }
+  }
+  .result {
+    text-align: center;
+
+    h3 {
+      font-size: 24px;
+      letter-spacing: 1.4px;
+      text-align: center;
+    }
+    p {
+      font-weight: 500;
+      font-size: 15px;
+    }
+    span {
+      color: $primary;
+      font-size: 22px;
     }
   }
 }
