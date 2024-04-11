@@ -4,15 +4,33 @@ import { qnaList } from "./utils/qnaList";
 import WelcomeInput from "./components/WelcomeInput";
 
 function App() {
-  const [isUser, setIsUser] = useState(null);
+  console.log(qnaList);
+  const [isUserLogged, setIsUserLogged] = useState(null);
+
+  const [silderVal, setSilderVal] = useState(48);
+
+  // Filter the qnaList based on the slider value
+  const filteredQuestions = qnaList.allQuestions.slice(0, silderVal);
+
+  const handleSliderChange = (val) => {
+    setSilderVal(val);
+    console.log(silderVal);
+  };
+
+  console.log(filteredQuestions);
   return (
     <>
-      {" "}
-      <WelcomeInput setIsUser={setIsUser} isUser={isUser} />
+      <WelcomeInput
+        setIsUserLogged={setIsUserLogged}
+        isUserLogged={isUserLogged}
+        handleSliderChange={handleSliderChange}
+        silderVal={silderVal}
+        setSilderVal={setSilderVal}
+      />
       <Quiz
-        AllQuestions={qnaList.allQuestions}
-        setIsUser={setIsUser}
-        isUser={isUser}
+        AllQuestions={filteredQuestions}
+        setIsUserLogged={setIsUserLogged}
+        isUserLogged={isUserLogged}
       />
     </>
   );
