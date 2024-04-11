@@ -1,17 +1,18 @@
-$primary: #150080;
-$accent: #d08642;
+$primary: #0244be;
+$accent: #af5704d5;
 $bg: #ffffff;
 $bg-accent: #e7e8e9;
-$disabled: #9c9c9c;
+$disabled: rgb(0, 86, 167);
 $foreground: #2d264b;
 
 .quiz-container {
-  width: 500px;
+  width: 700px;
   background: $bg;
   border-radius: 4px;
   margin-top: 100px;
   padding: 30px 60px;
   box-sizing: border-box;
+  background: linear-gradient(0deg, $primary 0.03%, $accent);
 
   .active-question-no {
     font-size: 32px;
@@ -22,7 +23,7 @@ $foreground: #2d264b;
   .total-question {
     font-size: 16px;
     font-weight: 500;
-    color: $disabled;
+    color: white;
   }
 
   h2 {
@@ -61,6 +62,7 @@ $foreground: #2d264b;
   .tryAgainBtn {
     background: linear-gradient(0deg, $primary 0.03%, $accent);
     border-radius: 9px;
+    font-weight: 550;
     font-size: 18px;
     color: $bg;
     padding: 10px 42px;
