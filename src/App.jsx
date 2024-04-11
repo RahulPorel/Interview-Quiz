@@ -1,14 +1,10 @@
 import { useState } from "react";
-import Quiz from "./components/Quiz";
 import { qnaList } from "./utils/qnaList";
 import WelcomeInput from "./components/WelcomeInput";
-
+import Quiz from "./components/Quiz";
 function App() {
-  console.log(qnaList);
   const [isUserLogged, setIsUserLogged] = useState(null);
-
-  const [silderVal, setSilderVal] = useState(48);
-
+  const [silderVal, setSilderVal] = useState(24);
   // Filter the qnaList based on the slider value
   const filteredQuestions = qnaList.allQuestions.slice(0, silderVal);
 
@@ -17,21 +13,23 @@ function App() {
     console.log(silderVal);
   };
 
-  console.log(filteredQuestions);
   return (
     <>
-      <WelcomeInput
-        setIsUserLogged={setIsUserLogged}
-        isUserLogged={isUserLogged}
-        handleSliderChange={handleSliderChange}
-        silderVal={silderVal}
-        setSilderVal={setSilderVal}
-      />
-      <Quiz
-        AllQuestions={filteredQuestions}
-        setIsUserLogged={setIsUserLogged}
-        isUserLogged={isUserLogged}
-      />
+      {!isUserLogged ? (
+        <WelcomeInput
+          setIsUserLogged={setIsUserLogged}
+          isUserLogged={isUserLogged}
+          handleSliderChange={handleSliderChange}
+          silderVal={silderVal}
+          setSilderVal={setSilderVal}
+        />
+      ) : (
+        <Quiz
+          AllQuestions={filteredQuestions}
+          setIsUserLogged={setIsUserLogged}
+          isUserLogged={isUserLogged}
+        />
+      )}
     </>
   );
 }
