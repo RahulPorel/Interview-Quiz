@@ -11,15 +11,16 @@ const WelcomeInput = ({
   silderVal,
   handleSliderChange,
   setSilderVal,
+  setForm,
+  form,
+  selectedLvl,
+  setSelectedLvl,
 }) => {
   const [isBasicClicked, setIsBasicClicked] = useState(false);
   const [isMediumClicked, setIsMediumClicked] = useState(false);
   const [isHardClicked, setIsHardClicked] = useState(false);
   const [isExtremeClicked, setIsExtremeClicked] = useState(false);
   const [isNameFilledEnter, setIsNameFilledEnter] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-  });
 
   const handleGenerateQuestions = () => {
     if (!form.name.length < 1) {
@@ -50,6 +51,8 @@ const WelcomeInput = ({
         setIsHardClicked={setIsHardClicked}
         setIsExtremeClicked={setIsExtremeClicked}
         setSilderVal={setSilderVal}
+        selectedLvl={selectedLvl}
+        setSelectedLvl={setSelectedLvl}
       />
 
       {isExtremeClicked && (

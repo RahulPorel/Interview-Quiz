@@ -7,27 +7,36 @@ function App() {
   const [silderVal, setSilderVal] = useState(24);
   // Filter the qnaList based on the slider value
   const filteredQuestions = qnaList.allQuestions.slice(0, silderVal);
-
+  const [form, setForm] = useState({
+    name: "",
+  });
+  const [selectedLvl, setSelectedLvl] = useState("");
   const handleSliderChange = (val) => {
     setSilderVal(val);
-    console.log(silderVal);
   };
 
   return (
     <>
       {!isUserLogged ? (
         <WelcomeInput
+          setForm={setForm}
+          form={form}
           setIsUserLogged={setIsUserLogged}
           isUserLogged={isUserLogged}
           handleSliderChange={handleSliderChange}
           silderVal={silderVal}
           setSilderVal={setSilderVal}
+          selectedLvl={selectedLvl}
+          setSelectedLvl={setSelectedLvl}
         />
       ) : (
         <Quiz
           AllQuestions={filteredQuestions}
           setIsUserLogged={setIsUserLogged}
           isUserLogged={isUserLogged}
+          setForm={setForm}
+          form={form}
+          selectedLvl={selectedLvl}
         />
       )}
     </>

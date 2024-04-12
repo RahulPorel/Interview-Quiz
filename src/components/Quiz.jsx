@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Styles/Quiz.scss";
 import { resultInitalState } from "../utils/qnaList";
 
-const Quiz = ({ AllQuestions }) => {
+const Quiz = ({ AllQuestions, form, selectedLvl }) => {
   const [currQuestions, setCurrQuestions] = useState(0);
   const [answerIndex, setAnswerIndex] = useState(null);
   const [ans, setAns] = useState(null);
@@ -63,10 +63,21 @@ const Quiz = ({ AllQuestions }) => {
         <>
           <span className="active-question-no">{currQuestions + 1}</span>
           <span className="total-question">/{AllQuestions.length}</span>
+          <div className="user-dashboard">
+            <h3>Good Morning, {form.name || "Demo"}</h3>
+            <h4>Your Scoreboard</h4>
+            <h6>Right Answer</h6>
+            <h6>Wrong Answer</h6>
+            <h6>Current Score</h6>
+            <h6>Diffucilty Level {}</h6>
+          </div>
+
           {currentQuestion ? (
             <>
               <h2>{questions}</h2>
+
               <ul>
+                <p>One mark </p>
                 {choices.map((choice, index) => (
                   <li
                     key={choice}

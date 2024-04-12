@@ -8,7 +8,7 @@ function InputBtnComponent({ isNameFilledEnter, form, setForm }) {
   const handleSaveName = () => {
     setShowSavedMsg(!showSavedMsg);
   };
-  console.log(form);
+
   return (
     <>
       <InputGroup className="mb-3 ">

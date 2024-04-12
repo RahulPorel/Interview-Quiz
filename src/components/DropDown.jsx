@@ -9,15 +9,15 @@ function QnaDropDown({
   setIsExtremeClicked,
   setIsHardClicked,
   setSilderVal,
+  selectedLvl,
+  setSelectedLvl,
 }) {
-  const [selectedLvl, setSelectedLvl] = useState("");
 
   const handleBasicLevelBtn = () => {
     setSilderVal(24);
     setIsExtremeClicked(false);
     setIsBasicClicked(true);
   };
-
   const handleMediumLevelBtn = () => {
     setIsExtremeClicked(false);
     setSilderVal(48);
