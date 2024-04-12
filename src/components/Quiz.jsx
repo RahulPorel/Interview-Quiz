@@ -129,7 +129,7 @@ const Quiz = ({
   const handleTimeUp = () => {
     setAns(false);
     handleNextQuestion(false);
-    
+
   };
 
   return (
@@ -139,10 +139,7 @@ const Quiz = ({
           <AnswerTimer
             duration={10}
             onTimeUp={handleTimeUp}
-            setAnswerIndex={setAnswerIndex}
-            setResult={setResult}
-            ans={ans}
-            setAns={setAns}
+          
           />
           {showCrrWrBtn ? (
             <Button

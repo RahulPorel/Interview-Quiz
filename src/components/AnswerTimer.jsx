@@ -1,14 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import "./Styles/AnswerTimer.scss";
 
-const AnswerTimer = ({
-  duration,
-  onTimeUp,
-  setAnswerIndex,
-  setResult,
-  ans,
-  setAns,
-}) => {
+const AnswerTimer = ({ duration, onTimeUp }) => {
   const [counter, setCounter] = useState(0);
   const [progressLoaded, setProgressLoaded] = useState(0);
   const intervalRef = useRef();
@@ -30,7 +23,6 @@ const AnswerTimer = ({
         onTimeUp();
       }, 1000);
     }
-  
   }, [counter]);
 
   console.log(progressLoaded);
