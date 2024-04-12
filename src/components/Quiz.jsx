@@ -127,11 +127,12 @@ const Quiz = ({
           <span className="active-question-no">{currQuestions + 1}</span>
           <span className="total-question"> / {AllQuestions.length}</span>
           <div className="user-dashboard">
-            <h3>
-              {greeting}, {form.name || "Demo"}
+            <h3 className="greeting">
+              {greeting},{" "}
+              <span className="greeting-user-name">{form.name || "Demo"}</span>
             </h3>
           </div>
-          {/* <h4 className>Your Scoreboard</h4> */}
+
           <h6 className="crr-ans-score">
             {" "}
             Correct Answers: {result.correctAnswer}

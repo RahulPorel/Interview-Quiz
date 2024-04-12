@@ -128,16 +128,23 @@ $foreground: #000000;
 }
 .curr-score {
   position: relative;
-  left: 74.4%;
+  left: 80%;
   margin-top: -17px;
 }
 // -14px
 .prev-score {
   position: relative;
-  left: 74.4%;
+  left: 84%;
   margin-top: -57px;
 }
 // -43
 .diff-lvl-score {
   display: none;
+}
+.greeting {
+  margin-bottom: 20px;
+  color: #db1313;
+}
+.greeting-user-name {
+  color: #25241b;
 }
