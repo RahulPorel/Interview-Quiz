@@ -2,6 +2,7 @@ import { useState } from "react";
 import { qnaList } from "./utils/qnaList";
 import WelcomeInput from "./components/WelcomeInput";
 import Quiz from "./components/Quiz";
+import CountDownTimer from "./components/CountDownTimer";
 function App() {
   const [isUserLogged, setIsUserLogged] = useState(null);
   const [silderVal, setSilderVal] = useState(24);
@@ -11,14 +12,17 @@ function App() {
     name: "",
   });
   const [selectedLvl, setSelectedLvl] = useState("");
+  const [duration, setDuration] = useState(0);
   const handleSliderChange = (val) => {
     setSilderVal(val);
   };
-
+  console.log(duration);
   return (
     <>
       {!isUserLogged ? (
         <WelcomeInput
+          setDuration={setDuration}
+          duration={duration}
           setForm={setForm}
           form={form}
           setIsUserLogged={setIsUserLogged}
@@ -30,13 +34,17 @@ function App() {
           setSelectedLvl={setSelectedLvl}
         />
       ) : (
-        <Quiz
-          AllQuestions={filteredQuestions}
-          setIsUserLogged={setIsUserLogged}
-          form={form}
-          selectedLvl={selectedLvl}
-          setSelectedLvl={setSelectedLvl}
-        />
+        <>
+          <CountDownTimer />
+          <Quiz
+            duration={duration}
+            AllQuestions={filteredQuestions}
+            setIsUserLogged={setIsUserLogged}
+            form={form}
+            selectedLvl={selectedLvl}
+            setSelectedLvl={setSelectedLvl}
+          />
+        </>
       )}
     </>
   );

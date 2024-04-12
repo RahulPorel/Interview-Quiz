@@ -10,7 +10,9 @@ const Quiz = ({
   selectedLvl,
   setIsUserLogged,
   setSelectedLvl,
+  duration,
 }) => {
+  let TimerBasedOnUserInput;
   const datObj = new Date();
   const hour = datObj.getHours();
   let showLvlSelectedMsg = "";
@@ -26,6 +28,8 @@ const Quiz = ({
   const [highestScore, setHighestScore] = useState(
     localStorage.getItem("highestScore") || 0
   );
+  const [showAnsTimer, setShowAnsTimer] = useState(true);
+
   useEffect(() => {
     // Update the highest score if the current score is higher
     if (result.score > highestScore) {
@@ -90,6 +94,7 @@ const Quiz = ({
 
   const handleNextQuestion = (finalAns) => {
     setAnswerIndex(null);
+    setShowAnsTimer(false);
     setResult((prevVal) =>
       finalAns
         ? {
@@ -109,6 +114,10 @@ const Quiz = ({
       setCurrQuestions(0);
       setShowResult(true);
     }
+
+    setTimeout(() => {
+      setShowAnsTimer(true);
+    });
   };
   // If currentQuestion is not defined, return null or handle it appropriately
   const { questions, choices, correctAnswer } = currentQuestion || {};
@@ -129,18 +138,16 @@ const Quiz = ({
   const handleTimeUp = () => {
     setAns(false);
     handleNextQuestion(false);
-
   };
-
+  console.log(duration);
   return (
     <div className="quiz-container">
       {!showResult ? (
         <>
-          <AnswerTimer
-            duration={10}
-            onTimeUp={handleTimeUp}
-          
-          />
+          {showAnsTimer && (
+            <AnswerTimer duration={duration} onTimeUp={handleTimeUp} />
+          )}
+
           {showCrrWrBtn ? (
             <Button
               className="default-styles-showLvlStatusBtn"

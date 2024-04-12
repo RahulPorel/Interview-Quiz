@@ -5,7 +5,7 @@ const AnswerTimer = ({ duration, onTimeUp }) => {
   const [counter, setCounter] = useState(0);
   const [progressLoaded, setProgressLoaded] = useState(0);
   const intervalRef = useRef();
-
+  console.log(duration);
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       setCounter((currCount) => currCount + 1);
@@ -24,8 +24,6 @@ const AnswerTimer = ({ duration, onTimeUp }) => {
       }, 1000);
     }
   }, [counter]);
-
-  console.log(progressLoaded);
 
   return (
     <div className="answer-timer-container">

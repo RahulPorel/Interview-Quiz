@@ -14,6 +14,8 @@ const WelcomeInput = ({
   form,
   selectedLvl,
   setSelectedLvl,
+  setDuration,
+  duration,
 }) => {
   const [isBasicClicked, setIsBasicClicked] = useState(false);
   const [isMediumClicked, setIsMediumClicked] = useState(false);
@@ -25,7 +27,6 @@ const WelcomeInput = ({
     if (!form.name.length < 1) {
       setIsNameFilledEnter(false);
       setIsUserLogged(true);
-  
     } else {
       setIsNameFilledEnter(true);
       setIsUserLogged(false);
@@ -46,6 +47,8 @@ const WelcomeInput = ({
 
       <p>Selected Questions: {silderVal}</p>
       <QnaDropDown
+        setDuration={setDuration}
+        duration={duration}
         setIsBasicClicked={setIsBasicClicked}
         setIsMediumClicked={setIsMediumClicked}
         setIsHardClicked={setIsHardClicked}

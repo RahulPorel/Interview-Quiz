@@ -11,23 +11,35 @@ function QnaDropDown({
   setSilderVal,
   selectedLvl,
   setSelectedLvl,
+  setDuration,
+  duration,
 }) {
+
+
   const handleBasicLevelBtn = () => {
+    console.log("bas");
+    setDuration(60);
     setSilderVal(24);
     setIsExtremeClicked(false);
     setIsBasicClicked(true);
   };
   const handleMediumLevelBtn = () => {
+    setDuration(45);
+
     setIsExtremeClicked(false);
     setSilderVal(48);
     setIsMediumClicked(true);
   };
   const handleHardLevelBtn = () => {
+    setDuration(25);
+
     setIsExtremeClicked(false);
     setSilderVal(96);
     setIsHardClicked(true);
   };
   const handleExtremeLevelBtn = () => {
+    setDuration(15);
+
     setIsExtremeClicked(true);
   };
 
