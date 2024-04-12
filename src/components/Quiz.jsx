@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./Styles/Quiz.scss";
 import { resultInitalState } from "../utils/qnaList";
 import Button from "react-bootstrap/Button";
+import AnswerTimer from "./AnswerTimer";
 
 const Quiz = ({
   AllQuestions,
@@ -87,10 +88,10 @@ const Quiz = ({
     }
   };
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = (finalAns) => {
     setAnswerIndex(null);
     setResult((prevVal) =>
-      ans
+      finalAns
         ? {
             ...prevVal,
             score: prevVal.score + 1,
@@ -125,11 +126,24 @@ const Quiz = ({
     setSelectedLvl(false);
     form.name = "";
   };
+  const handleTimeUp = () => {
+    setAns(false);
+    handleNextQuestion(false);
+    
+  };
 
   return (
     <div className="quiz-container">
       {!showResult ? (
         <>
+          <AnswerTimer
+            duration={10}
+            onTimeUp={handleTimeUp}
+            setAnswerIndex={setAnswerIndex}
+            setResult={setResult}
+            ans={ans}
+            setAns={setAns}
+          />
           {showCrrWrBtn ? (
             <Button
               className="default-styles-showLvlStatusBtn"
@@ -168,7 +182,10 @@ const Quiz = ({
           <div className="user-dashboard">
             <h3 className="greeting">
               {greeting},
-              <span className="greeting-user-name">{form.name || "Demo"}</span>
+              <span className="greeting-user-name">
+                {" "}
+                {form.name.toUpperCase() || "Demo"}
+              </span>
             </h3>
           </div>
           <h6 className="crr-ans-score">
@@ -196,10 +213,13 @@ const Quiz = ({
 
           {currentQuestion ? (
             <>
-              <h2>{questions}</h2>
+              <h2
+                style={{ fontFamily: "Verdana, sans-serif", fontWeight: "525" }}
+              >
+                Q{currQuestions + 1}: {questions}
+              </h2>
 
               <ul>
-                <p>One mark </p>
                 {choices.map((choice, index) => (
                   <li
                     key={choice}
@@ -216,7 +236,7 @@ const Quiz = ({
               <div className="footer">
                 <button
                   className="nextQuestionBtn"
-                  onClick={handleNextQuestion}
+                  onClick={() => handleNextQuestion(ans)}
                   disabled={answerIndex === null}
                 >
                   {currQuestions === AllQuestions.length - 1
@@ -231,9 +251,9 @@ const Quiz = ({
         </>
       ) : (
         <div className="result">
-          <h3> {form.name}, here is your result</h3>
+          <h3> {form.name.toUpperCase()}, here is your End Score</h3>
           <p>
-            Your Total Questions: <span> {AllQuestions.length}</span>
+            Your total questions: <span> {AllQuestions.length}</span>
           </p>
           <p>
             Current Score: <span> {result.score}</span>
@@ -252,7 +272,7 @@ const Quiz = ({
           </button>{" "}
           <br />
           <button onClick={handTryAsFresh} className=" tryAgainBtn">
-            Start as fresh
+            Restart
           </button>
         </div>
       )}
