@@ -2,7 +2,7 @@ import { useState } from "react";
 import { qnaList } from "./utils/qnaList";
 import WelcomeInput from "./components/WelcomeInput";
 import Quiz from "./components/Quiz";
-import CountDownTimer from "./components/CountDownTimer";
+
 function App() {
   const [isUserLogged, setIsUserLogged] = useState(null);
   const [silderVal, setSilderVal] = useState(24);
@@ -35,7 +35,7 @@ function App() {
         />
       ) : (
         <>
-          <CountDownTimer />
+          {/* <CountDownTimer /> */}
           <Quiz
             duration={duration}
             AllQuestions={filteredQuestions}
