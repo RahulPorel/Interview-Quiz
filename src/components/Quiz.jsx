@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Styles/Quiz.scss";
 import { resultInitalState } from "../utils/qnaList";
+import Button from "react-bootstrap/Button";
 
 const Quiz = ({
   AllQuestions,
@@ -20,6 +21,7 @@ const Quiz = ({
   const [ans, setAns] = useState(null);
   const [result, setResult] = useState(resultInitalState);
   const [showResult, setShowResult] = useState(false);
+  const [showCrrWrBtn, setShowCrrWrongBtn] = useState(false);
   const [highestScore, setHighestScore] = useState(
     localStorage.getItem("highestScore") || 0
   );
@@ -44,8 +46,10 @@ const Quiz = ({
     showLvlSelectedMsg = "Medium ";
   } else if (selectedLvl === "3") {
     showLvlSelectedMsg = "Hard ";
-  } else {
+  } else if (selectedLvl === "4") {
     showLvlSelectedMsg = "Extreme ";
+  } else {
+    showLvlSelectedMsg = "Basic ";
   }
 
   // Determine the appropriate greeting based on the hour
@@ -77,6 +81,9 @@ const Quiz = ({
     } else {
       setShowCrrMsg("Wrong Answer");
       setAns(false);
+    }
+    if (answer.length > 1) {
+      setShowCrrWrongBtn(true);
     }
   };
 
@@ -118,36 +125,75 @@ const Quiz = ({
     setSelectedLvl(false);
     form.name = "";
   };
-  // const [showUserCrrAns, setShowUserCrrAns] = useState(false);
 
   return (
     <div className="quiz-container">
       {!showResult ? (
         <>
-          <span className="active-question-no">{currQuestions + 1}</span>
-          <span className="total-question"> / {AllQuestions.length}</span>
+          {showCrrWrBtn ? (
+            <Button
+              className="default-styles-showLvlStatusBtn"
+              variant="outline-primary"
+            >
+              {showLvlSelectedMsg}
+            </Button>
+          ) : (
+            <Button
+              className="default-styles-showLvlStatusBtn"
+              variant="outline-primary"
+            >
+              Difficulty Level
+            </Button>
+          )}
+
+          <div className="answer-wr-cr-status">
+            {showCrrWrBtn ? (
+              <Button
+                className={ans ? "crrAnsStatus" : "wrongAnsStatus"}
+                variant={!ans ? "danger" : "success"}
+              >
+                {showCrrAnsMsg}
+              </Button>
+            ) : (
+              <Button className="crrAnsStatus" variant={"success"}>
+                Answer Satatus
+              </Button>
+            )}
+          </div>
+          <div className="noOFQ">
+            <span className="active-question-no">{currQuestions + 1}</span>
+            <span className="total-question"> / {AllQuestions.length}</span>
+          </div>
+
           <div className="user-dashboard">
             <h3 className="greeting">
-              {greeting},{" "}
+              {greeting},
               <span className="greeting-user-name">{form.name || "Demo"}</span>
             </h3>
           </div>
-
           <h6 className="crr-ans-score">
             {" "}
-            Correct Answers: {result.correctAnswer}
+            Correct Answers:{" "}
+            <span className="result-crr">{result.correctAnswer}</span>
           </h6>
           <h6 className="wrong-ans-score">
-            Wrong Answers: {result.wrongAnswer}
+            Wrong Answers:{" "}
+            <span className="result-wrong"> {result.wrongAnswer}</span>
           </h6>
-          <h6 className="curr-score">Current Score: {result.score}</h6>
-          <h6 className="prev-score"> Prev Score: {result.score}</h6>
-          <h6 className="diff-lvl-score">
-            Diffucilty Level {showLvlSelectedMsg}
+          <h6 className="curr-score">
+            Current Score:{" "}
+            <span className="current-score"> {result.score}</span>
           </h6>
-          <p className={ans ? "crrAnsStatus" : "wrongAnsStatus"}>
-            {showCrrAnsMsg}
-          </p>
+          <h6 className="prev-score">
+            {" "}
+            Highest Score:{" "}
+            <span
+              className={highestScore > result.score ? "highest-score" : null}
+            >
+              {highestScore}
+            </span>{" "}
+          </h6>
+
           {currentQuestion ? (
             <>
               <h2>{questions}</h2>
