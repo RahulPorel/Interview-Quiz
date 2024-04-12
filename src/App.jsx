@@ -33,10 +33,9 @@ function App() {
         <Quiz
           AllQuestions={filteredQuestions}
           setIsUserLogged={setIsUserLogged}
-          isUserLogged={isUserLogged}
-          setForm={setForm}
           form={form}
           selectedLvl={selectedLvl}
+          setSelectedLvl={setSelectedLvl}
         />
       )}
     </>

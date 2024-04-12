@@ -6,7 +6,6 @@ import QnaDropDown from "./DropDown";
 import InputBtnComponent from "./InputBtnC";
 import Button from "react-bootstrap/Button";
 const WelcomeInput = ({
-  isUserLogged,
   setIsUserLogged,
   silderVal,
   handleSliderChange,
@@ -26,6 +25,7 @@ const WelcomeInput = ({
     if (!form.name.length < 1) {
       setIsNameFilledEnter(false);
       setIsUserLogged(true);
+  
     } else {
       setIsNameFilledEnter(true);
       setIsUserLogged(false);
