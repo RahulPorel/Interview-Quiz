@@ -13,6 +13,8 @@ const Quiz = ({
   const hour = datObj.getHours();
   let showLvlSelectedMsg = "";
   let greeting;
+  const [showCrrAnsMsg, setShowCrrMsg] = useState("");
+
   const [currQuestions, setCurrQuestions] = useState(0);
   const [answerIndex, setAnswerIndex] = useState(null);
   const [ans, setAns] = useState(null);
@@ -68,9 +70,12 @@ const Quiz = ({
 
   const onAnswerClick = (answer, index) => {
     setAnswerIndex(index);
+
     if (answer === correctAnswer) {
+      setShowCrrMsg("Correct Answer");
       setAns(true);
     } else {
+      setShowCrrMsg("Wrong Answer");
       setAns(false);
     }
   };
@@ -113,16 +118,7 @@ const Quiz = ({
     setSelectedLvl(false);
     form.name = "";
   };
-
-  // if (hour >= 0 && hour < 12) {
-  //   console.log("Good morning");
-  // } else if (hour >= 12 && hour < 17) {
-  //   console.log("Good afternoon");
-  // } else if (hour >= 17 && hour < 21) {
-  //   console.log("Good evening");
-  // } else {
-  //   console.log("Good night");
-  // }
+  // const [showUserCrrAns, setShowUserCrrAns] = useState(false);
 
   return (
     <div className="quiz-container">
@@ -134,14 +130,16 @@ const Quiz = ({
             <h3>
               {greeting}, {form.name || "Demo"}
             </h3>
-            <h4>Your Scoreboard</h4>
-            <h6>Correct Answers: {result.correctAnswer}</h6>
-            <h6>Wrong Answers: {result.wrongAnswer}</h6>
-            <h6>Current Score: {result.score}</h6>
-            <h6>Prev Score: {result.score}</h6>
-            <h6>Diffucilty Level {showLvlSelectedMsg}</h6>
           </div>
-
+          <h4 className>Your Scoreboard</h4>
+          <h6 className="crr-ans-score"> Correct Answers: {result.correctAnswer}</h6>
+          <h6 className="wrong-ans-score">Wrong Answers: {result.wrongAnswer}</h6>
+          <h6 >Current Score: {result.score}</h6>
+          <h6>Prev Score: {result.score}</h6>
+          <h6>Diffucilty Level {showLvlSelectedMsg}</h6>
+          <p className={ans ? "crrAnsStatus" : "wrongAnsStatus"}>
+            {showCrrAnsMsg}
+          </p>
           {currentQuestion ? (
             <>
               <h2>{questions}</h2>
@@ -153,6 +151,9 @@ const Quiz = ({
                     key={choice}
                     onClick={() => onAnswerClick(choice, index)}
                     className={answerIndex === index ? "selected-answer" : null}
+                    // className={`${
+                    //   answerIndex === index ? "selected-answer" : ""
+                    // } ${showUserCrrAns ? "correct-answer" : ""}`}
                   >
                     {choice}
                   </li>

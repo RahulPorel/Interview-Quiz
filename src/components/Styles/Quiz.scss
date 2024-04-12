@@ -1,9 +1,10 @@
-$primary: #0244be;
-$accent: #af5704d5;
-$bg: #ffffff;
-$bg-accent: #e7e8e9;
+// $primary: #0244be;
+$primary: #8a8d85;
+$accent: #f3dfb4;
+$bg: #f0dfcf;
+$bg-accent: #e7e9e7;
 $disabled: rgb(0, 86, 167);
-$foreground: #2d264b;
+$foreground: #000000;
 
 .quiz-container {
   width: 700px;
@@ -51,6 +52,9 @@ $foreground: #2d264b;
       border: 1px solid $accent;
       color: $bg;
     }
+    .correct-answer {
+      background: #2ebe02;
+    }
   }
 
   .footer {
@@ -97,4 +101,18 @@ $foreground: #2d264b;
       font-size: 22px;
     }
   }
+}
+
+.crrAnsStatus {
+  color: #2ebe02;
+}
+.wrongAnsStatus {
+  color: red;
+}
+
+.user-dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
