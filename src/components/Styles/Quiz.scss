@@ -16,21 +16,22 @@ $foreground: #000000;
   background: linear-gradient(0deg, $primary 0.03%, $accent);
 
   .active-question-no {
-    font-size: 32px;
-    font-weight: 500;
-    color: $primary;
+    font-size: 3rem;
+    font-weight: 600;
+    color: black;
   }
 
   .total-question {
-    font-size: 16px;
+    font-size: 1.5rem;
     font-weight: 500;
-    color: white;
+    color: rgb(26, 24, 31);
   }
 
   h2 {
     font-size: 20px;
+    text-align: center;
     font-weight: 500;
-    margin: 0;
+    padding: 4rem 0 0.5rem 0;
   }
 
   ul {
@@ -115,4 +116,28 @@ $foreground: #000000;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
+}
+
+.wrong-ans-score {
+  margin-top: 15px;
+  margin-bottom: -5px;
+}
+.crr-ans-score {
+  margin-bottom: -7px;
+}
+.curr-score {
+  position: relative;
+  left: 74.4%;
+  margin-top: -17px;
+}
+// -14px
+.prev-score {
+  position: relative;
+  left: 74.4%;
+  margin-top: -57px;
+}
+// -43
+.diff-lvl-score {
+  display: none;
 }

@@ -125,18 +125,25 @@ const Quiz = ({
       {!showResult ? (
         <>
           <span className="active-question-no">{currQuestions + 1}</span>
-          <span className="total-question">/{AllQuestions.length}</span>
+          <span className="total-question"> / {AllQuestions.length}</span>
           <div className="user-dashboard">
             <h3>
               {greeting}, {form.name || "Demo"}
             </h3>
           </div>
-          <h4 className>Your Scoreboard</h4>
-          <h6 className="crr-ans-score"> Correct Answers: {result.correctAnswer}</h6>
-          <h6 className="wrong-ans-score">Wrong Answers: {result.wrongAnswer}</h6>
-          <h6 >Current Score: {result.score}</h6>
-          <h6>Prev Score: {result.score}</h6>
-          <h6>Diffucilty Level {showLvlSelectedMsg}</h6>
+          {/* <h4 className>Your Scoreboard</h4> */}
+          <h6 className="crr-ans-score">
+            {" "}
+            Correct Answers: {result.correctAnswer}
+          </h6>
+          <h6 className="wrong-ans-score">
+            Wrong Answers: {result.wrongAnswer}
+          </h6>
+          <h6 className="curr-score">Current Score: {result.score}</h6>
+          <h6 className="prev-score"> Prev Score: {result.score}</h6>
+          <h6 className="diff-lvl-score">
+            Diffucilty Level {showLvlSelectedMsg}
+          </h6>
           <p className={ans ? "crrAnsStatus" : "wrongAnsStatus"}>
             {showCrrAnsMsg}
           </p>
