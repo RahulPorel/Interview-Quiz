@@ -1,17 +1,41 @@
-.result {
-  text-align: center;
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
-  h3 {
-    font-size: 24px;
-    letter-spacing: 1.4px;
-    text-align: center;
-  }
-  p {
-    font-weight: 500;
-    font-size: 15px;
-  }
-  span {
-    color: $primary;
-    font-size: 22px;
-  }
+.result-table td {
+  font-weight: 500;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.result-table td:first-child {
+  text-align: left;
+}
+
+.result-table td:last-child {
+  text-align: right;
+}
+
+.button-container {
+  text-align: right;
+  margin-top: 20px; /* Adjust this value as needed */
+}
+
+.tryAgainBtn {
+  text-align: start;
+  margin-right: 10px; /* Adjust this value as needed */
+}
+.restartBtn {
+  margin-right: 15px;
+  background: rgb(5, 152, 189);
+  border-radius: 9px;
+  font-weight: 550;
+  font-size: 18px;
+  color: white;
+  padding: 10px 20px;
+  outline: none;
+  border: none;
+  margin-top: -35px;
+  cursor: pointer;
 }

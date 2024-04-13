@@ -220,23 +220,22 @@ const Quiz = ({
           {showStats ? (
             <>
               <h6 className="crr-ans-score">
-                {" "}
                 Correct Answers:
-                <span className="result-crr">{result.correctAnswer}</span>
+                <span className="result-crr"> {result.correctAnswer}</span>
               </h6>
               <h6 className="wrong-ans-score">
                 Wrong Answers:
                 <span className="result-wrong"> {result.wrongAnswer}</span>
               </h6>
               <h6 className="curr-score">
-                Current Score:
+                Attempted Questions:
                 <span className="current-score"> {result.score}</span>
               </h6>
               <h6 className="prev-score">
-                Highest Score:
+                Highest Score: &nbsp;
                 <span
                   className={
-                    highestScore > result.score ? "highest-score" : null
+                    highestScore > result.score ? "highest-score " : null
                   }
                 >
                   {highestScore}

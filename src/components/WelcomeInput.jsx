@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-``;
 import QnaDropDown from "./DropDown";
 import InputBtnComponent from "./InputBtnC";
 import Button from "react-bootstrap/Button";
+
+
 const WelcomeInput = ({
   setIsUserLogged,
   silderVal,
@@ -44,7 +45,7 @@ const WelcomeInput = ({
   console.log(duration);
 
   return (
-    <div>
+    <div className="dashboard">
       <h2>Welcome to Interview Prepartion</h2>
       <h3>We will help you to execel on your technical interview</h3>
       <p>You can customize your test on your perfrence </p>

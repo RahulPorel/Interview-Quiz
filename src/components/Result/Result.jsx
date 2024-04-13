@@ -1,4 +1,4 @@
-import React from "react";
+import "../Styles/Result.scss";
 
 const Result = ({
   AllQuestions,
@@ -9,31 +9,45 @@ const Result = ({
   handTryAsFresh,
 }) => {
   return (
-    <div className="result">
-      <h3> {form.name.toUpperCase()}, here is your End Score</h3>
-      <p>
-        Your total questions: <span> {AllQuestions.length}</span>
-      </p>
-      <p>
-        Current Score: <span> {result.score}</span>
-      </p>
-      <p>
-        Highest Score: <span> {highestScore}</span>
-      </p>
-      <p>
-        Correct Answers: <span> {result.correctAnswer}</span>
-      </p>
-      <p>
-        Wrong Answers: <span> {result.wrongAnswer}</span>
-      </p>
-      <button onClick={handleTryAgain} className=" tryAgainBtn">
-        Try Again
-      </button>
-
-      <button onClick={handTryAsFresh} className=" tryAgainBtn">
-        Restart
-      </button>
-    </div>
+    <>
+      <div className="result">
+        <h3 className="result-center">
+          {form.name.toUpperCase()}, here is your score board
+        </h3>
+        <table className="result-table">
+          <tbody>
+            <tr>
+              <td>Total Questions </td>
+              <td>{AllQuestions.length}</td>
+            </tr>
+            <tr>
+              <td>Attempted Questions </td>
+              <td>{result.score}</td>
+            </tr>
+            <tr>
+              <td>Highest Score </td>
+              <td>{highestScore}</td>
+            </tr>
+            <tr>
+              <td>Correct Answers </td>
+              <td style={{ color: "#20f016" }}>{result.correctAnswer}</td>
+            </tr>
+            <tr>
+              <td>Wrong Answers </td>
+              <td style={{ color: "red" }}>{result.wrongAnswer}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div className="button-container">
+        <button className="restartBtn " onClick={handTryAsFresh}>
+          Restart
+        </button>
+        <button className="tryAgainBtn" onClick={handleTryAgain}>
+          Try Again
+        </button>
+      </div>
+    </>
   );
 };
 
