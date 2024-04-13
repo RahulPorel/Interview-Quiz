@@ -40,12 +40,9 @@ const WelcomeInput = ({
     }
   };
 
-  console.log(userTimerDuration);
-  console.log(duration);
-
   return (
     <div className="dashboard">
-      <h2>Welcome to Interview Quiz's</h2>
+      <h2>Welcome to Interview Quiz</h2>
       <br />
       <InputBtnComponent
         isNameFilledEnter={isNameFilledEnter}

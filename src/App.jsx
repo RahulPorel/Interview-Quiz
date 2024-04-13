@@ -7,7 +7,6 @@ function App() {
   const [isUserLogged, setIsUserLogged] = useState(null);
   const [silderVal, setSilderVal] = useState(24);
   const [userTimerDuration, setUserTimerDuration] = useState(15);
-
   // Filter the qnaList based on the slider value
   const filteredQuestions = qnaList.allQuestions.slice(0, silderVal);
   const [form, setForm] = useState({
@@ -23,7 +22,6 @@ function App() {
   const handleTimerDurationSliderCh = (val) => {
     setUserTimerDuration(val);
   };
-  console.log(userTimerDuration);
   return (
     <>
       {!isUserLogged ? (
