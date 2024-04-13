@@ -6,6 +6,8 @@ import Quiz from "./components/Quiz";
 function App() {
   const [isUserLogged, setIsUserLogged] = useState(null);
   const [silderVal, setSilderVal] = useState(24);
+  const [userTimerDuration, setUserTimerDuration] = useState(15);
+
   // Filter the qnaList based on the slider value
   const filteredQuestions = qnaList.allQuestions.slice(0, silderVal);
   const [form, setForm] = useState({
@@ -16,7 +18,11 @@ function App() {
   const handleSliderChange = (val) => {
     setSilderVal(val);
   };
-  console.log(duration);
+
+  const handleTimerDurationSliderCh = (val) => {
+    setUserTimerDuration(val);
+  };
+
   return (
     <>
       {!isUserLogged ? (
@@ -32,19 +38,20 @@ function App() {
           setSilderVal={setSilderVal}
           selectedLvl={selectedLvl}
           setSelectedLvl={setSelectedLvl}
+          handleTimerDurationSliderCh={handleTimerDurationSliderCh}
+          userTimerDuration={userTimerDuration}
+          setUserTimerDuration={setUserTimerDuration}
         />
       ) : (
-        <>
-          {/* <CountDownTimer /> */}
-          <Quiz
-            duration={duration}
-            AllQuestions={filteredQuestions}
-            setIsUserLogged={setIsUserLogged}
-            form={form}
-            selectedLvl={selectedLvl}
-            setSelectedLvl={setSelectedLvl}
-          />
-        </>
+        <Quiz
+          duration={(duration && userTimerDuration) || 15}
+          AllQuestions={filteredQuestions}
+          setIsUserLogged={setIsUserLogged}
+          form={form}
+          selectedLvl={selectedLvl}
+          setSelectedLvl={setSelectedLvl}
+          userTimerDuration={userTimerDuration}
+        />
       )}
     </>
   );

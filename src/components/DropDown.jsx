@@ -13,6 +13,9 @@ function QnaDropDown({
   setSelectedLvl,
   setDuration,
   duration,
+
+  handleTimerDurationSliderCh,
+  setUserTimerDuration
 }) {
 
 

@@ -16,6 +16,10 @@ const WelcomeInput = ({
   setSelectedLvl,
   setDuration,
   duration,
+
+  handleTimerDurationSliderCh,
+  userTimerDuration,
+  setUserTimerDuration,
 }) => {
   const [isBasicClicked, setIsBasicClicked] = useState(false);
   const [isMediumClicked, setIsMediumClicked] = useState(false);
@@ -46,6 +50,7 @@ const WelcomeInput = ({
       />
 
       <p>Selected Questions: {silderVal}</p>
+      <p>Selected Durations: {userTimerDuration}</p>
       <QnaDropDown
         setDuration={setDuration}
         duration={duration}
@@ -56,6 +61,9 @@ const WelcomeInput = ({
         setSilderVal={setSilderVal}
         selectedLvl={selectedLvl}
         setSelectedLvl={setSelectedLvl}
+
+        handleTimerDurationSliderCh={handleTimerDurationSliderCh}
+        setUserTimerDuration={setUserTimerDuration}
       />
 
       {isExtremeClicked && (
@@ -68,6 +76,15 @@ const WelcomeInput = ({
             value={silderVal}
             defaultValue={48}
             onChange={handleSliderChange}
+          />
+          <br /> <br />
+          <Slider
+            min={6}
+            max={60}
+            step={1}
+            value={userTimerDuration}
+            defaultValue={15}
+            onChange={handleTimerDurationSliderCh}
           />
         </>
       )}

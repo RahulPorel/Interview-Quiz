@@ -11,13 +11,14 @@ const Quiz = ({
   setIsUserLogged,
   setSelectedLvl,
   duration,
+  userTimerDuration,
 }) => {
-  let TimerBasedOnUserInput;
   const datObj = new Date();
   const hour = datObj.getHours();
   let showLvlSelectedMsg = "";
   let greeting;
   const [showCrrAnsMsg, setShowCrrMsg] = useState("");
+  const [counter, setCounter] = useState(0);
 
   const [currQuestions, setCurrQuestions] = useState(0);
   const [answerIndex, setAnswerIndex] = useState(null);
@@ -37,7 +38,7 @@ const Quiz = ({
       localStorage.setItem("highestScore", result.score);
     }
   }, [result.score]);
-
+  console.log(userTimerDuration);
   const greetings = {
     morning: "Good morning",
     afternoon: "Good afternoon",
@@ -117,6 +118,7 @@ const Quiz = ({
 
     setTimeout(() => {
       setShowAnsTimer(true);
+      setCounter(0);
     });
   };
   // If currentQuestion is not defined, return null or handle it appropriately
@@ -139,28 +141,33 @@ const Quiz = ({
     setAns(false);
     handleNextQuestion(false);
   };
-  console.log(duration);
+
   return (
     <div className="quiz-container">
       {!showResult ? (
         <>
           {showAnsTimer && (
-            <AnswerTimer duration={duration} onTimeUp={handleTimeUp} />
+            <AnswerTimer
+              duration={duration}
+              onTimeUp={handleTimeUp}
+              setCounter={setCounter}
+              counter={counter}
+            />
           )}
 
           {showCrrWrBtn ? (
             <Button
               className="default-styles-showLvlStatusBtn"
-              variant="outline-primary"
+              variant="warning"
             >
               {showLvlSelectedMsg}
             </Button>
           ) : (
             <Button
               className="default-styles-showLvlStatusBtn"
-              variant="outline-primary"
+              variant="warning"
             >
-              Difficulty Level
+              {showLvlSelectedMsg}
             </Button>
           )}
 
@@ -237,6 +244,7 @@ const Quiz = ({
                   </li>
                 ))}
               </ul>
+
               <div className="footer">
                 <button
                   className="nextQuestionBtn"
@@ -252,6 +260,9 @@ const Quiz = ({
           ) : (
             <div>No questions available</div>
           )}
+          <span className="timer">
+            {counter} / {duration}
+          </span>
         </>
       ) : (
         <div className="result">
