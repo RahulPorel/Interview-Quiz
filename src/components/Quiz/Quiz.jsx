@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import "./Styles/Quiz.scss";
-import { resultInitalState } from "../utils/qnaList";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
-import AnswerTimer from "./AnswerTimer";
-import Result from "./Result/Result";
+import { resultInitalState } from "../../utils/qnaList";
+import AnswerTimer from "../Timer/AnswerTimer";
+import Result from "../Result/Result";
+import "../Styles/Quiz.scss";
 
 const Quiz = ({
   AllQuestions,
@@ -12,7 +12,6 @@ const Quiz = ({
   setIsUserLogged,
   setSelectedLvl,
   duration,
-  userTimerDuration,
 }) => {
   const datObj = new Date();
   const hour = datObj.getHours();

@@ -1,7 +1,7 @@
 import { useState } from "react";
+import Quiz from "./components/Quiz/Quiz";
+import WelcomeInput from "./components/WelcomeUser/WelcomeInput";
 import { qnaList } from "./utils/qnaList";
-import WelcomeInput from "./components/WelcomeInput";
-import Quiz from "./components/Quiz";
 
 function App() {
   const [isUserLogged, setIsUserLogged] = useState(null);

@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import "./Styles/AnswerTimer.scss";
+import "../Styles/AnswerTimer.scss";
 
 const AnswerTimer = ({
   duration,

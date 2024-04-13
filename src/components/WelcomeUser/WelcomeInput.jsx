@@ -1,10 +1,11 @@
-import { useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import QnaDropDown from "./DropDown";
-import InputBtnComponent from "./InputBtnC";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
-import "./Styles/WelcomeInput.scss";
+import QnaDropDown from "../DropDown/DropDown";
+import InputBtnComponent from "../InputBtn/InputBtnC";
+
+import "../Styles/WelcomeInput.scss";
 
 const WelcomeInput = ({
   setIsUserLogged,
