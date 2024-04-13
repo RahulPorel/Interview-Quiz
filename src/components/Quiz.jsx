@@ -304,7 +304,14 @@ const Quiz = ({
           )}
         </>
       ) : (
-        <Result />
+        <Result
+          AllQuestions={AllQuestions}
+          form={form}
+          result={result}
+          highestScore={highestScore}
+          handleTryAgain={handleTryAgain}
+          handTryAsFresh={handTryAsFresh}
+        />
       )}
     </div>
   );

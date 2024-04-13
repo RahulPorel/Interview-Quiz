@@ -89,23 +89,6 @@ $foreground: #000000;
   .tryAgainBtn {
     background: rgb(177, 1, 1);
   }
-  .result {
-    text-align: center;
-
-    h3 {
-      font-size: 24px;
-      letter-spacing: 1.4px;
-      text-align: center;
-    }
-    p {
-      font-weight: 500;
-      font-size: 15px;
-    }
-    span {
-      color: $primary;
-      font-size: 22px;
-    }
-  }
 }
 .default-styles-showLvlStatusBtn {
   display: flex;

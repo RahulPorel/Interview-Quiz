@@ -1,6 +1,13 @@
 import React from "react";
 
-const Result = () => {
+const Result = ({
+  AllQuestions,
+  form,
+  result,
+  highestScore,
+  handleTryAgain,
+  handTryAsFresh,
+}) => {
   return (
     <div className="result">
       <h3> {form.name.toUpperCase()}, here is your End Score</h3>
