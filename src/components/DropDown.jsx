@@ -72,7 +72,7 @@ function QnaDropDown({
   };
 
   return (
-    <FloatingLabel controlId="floatingSelect" label="Works with selects">
+    <FloatingLabel controlId="floatingSelect" label="Question Perfrence">
       <Form.Select
         onChange={handleLvlCh}
         value={selectedLvl}

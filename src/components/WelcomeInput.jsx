@@ -4,7 +4,7 @@ import "rc-slider/assets/index.css";
 import QnaDropDown from "./DropDown";
 import InputBtnComponent from "./InputBtnC";
 import Button from "react-bootstrap/Button";
-
+import "./Styles/WelcomeInput.scss";
 
 const WelcomeInput = ({
   setIsUserLogged,
@@ -17,11 +17,9 @@ const WelcomeInput = ({
   setSelectedLvl,
   setDuration,
   duration,
-
   handleTimerDurationSliderCh,
   userTimerDuration,
   setUserTimerDuration,
-
   isExtremeBtnClicked,
   setIsExtremeBtnClicked,
 }) => {
@@ -46,23 +44,14 @@ const WelcomeInput = ({
 
   return (
     <div className="dashboard">
-      <h2>Welcome to Interview Prepartion</h2>
-      <h3>We will help you to execel on your technical interview</h3>
-      <p>You can customize your test on your perfrence </p>
-
+      <h2>Welcome to Interview Quiz's</h2>
+      <br />
       <InputBtnComponent
         isNameFilledEnter={isNameFilledEnter}
         form={form}
         setForm={setForm}
       />
-
-      <p>Selected Questions: {silderVal}</p>
-      {isExtremeBtnClicked ? (
-        <p>Selected Durations: {userTimerDuration || 15}</p>
-      ) : (
-        <p>Selected Durations: {userTimerDuration ? duration : 15}</p>
-      )}
-
+      <br />
       <QnaDropDown
         setDuration={setDuration}
         duration={duration}
@@ -78,19 +67,24 @@ const WelcomeInput = ({
         isExtremeBtnClicked={isExtremeBtnClicked}
         setIsExtremeBtnClicked={setIsExtremeBtnClicked}
       />
-
+      <br />
       {isExtremeClicked && (
         <>
-          <p>Change your no of questions as per your wish</p>
+          <span>Change your number of questions: {silderVal}</span>
           <Slider
             min={6}
-            max={100}
+            max={99}
             step={1}
             value={silderVal}
             defaultValue={48}
             onChange={handleSliderChange}
           />
-          <br /> <br />
+          <br />
+          <span>
+            Change your max-duration timeout for each and every questions:{" "}
+            {userTimerDuration}'s
+          </span>
+
           <Slider
             min={6}
             max={60}
@@ -101,13 +95,22 @@ const WelcomeInput = ({
           />
         </>
       )}
-
+      <br />
       <Button
         onClick={handleGenerateQuestions}
         variant={isNameFilledEnter ? "danger" : "success"}
       >
         Generate Questions
       </Button>
+
+      <div className="footer-welcome">
+        <p>Selected Questions: {silderVal}</p>
+        {isExtremeBtnClicked ? (
+          <p>Selected Durations: {userTimerDuration || 15}'s</p>
+        ) : (
+          <p>Selected Durations: {userTimerDuration ? duration : 15}'s</p>
+        )}
+      </div>
     </div>
   );
 };
