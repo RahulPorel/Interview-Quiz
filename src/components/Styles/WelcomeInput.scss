@@ -12,9 +12,10 @@
 .footer-welcome {
   cursor: not-allowed;
   text-align: end;
-  display: inline-flex;
-  margin-left: 15px;
-  margin-right: 5px;
+  display: flex;
+  margin-left: 0rem;
+  margin-top: -2rem;
+  align-items: end;
   justify-content: flex-end;
 }
 p {

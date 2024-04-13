@@ -88,40 +88,25 @@ body {
       }
     }
   }
-  .stats {
-    font-size: 15px;
-    padding: 7.5px 17.5px;
-  }
-  .nextQuestionBtn {
-    font-size: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // align-self: flex-end
-    justify-self: center;
-    padding: 7.5px 17.5px;
-    margin-top: 55rem;
-    margin-left: 1rem;
-    cursor: pointer;
+
+  .hideit-dummydiv,
+  .prev-score,
+  .curr-score,
+  .answer-wr-cr-status,
+  .stats .wrong-ans-score,
+  .crr-ans-score,
+  .stats,
+  .wrong-ans-score,
+  .greeting {
+    display: none;
   }
 
   .footer-timer {
+    margin-left: -9.5rem;
     font-size: 20px;
-    font-weight: 500;
   }
   .footer-timer-dur {
     font-size: 15px;
-  }
-  // ressult com
-
-  .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // align-self: flex-end
-    justify-self: center;
-    margin-top: 3.5rem;
-    margin-left: 1rem;
   }
 }
 
@@ -140,16 +125,5 @@ body {
     margin-top: 15px;
     padding: 20px 20px;
     box-sizing: border-box;
-  }
-  // ressult com
-
-  .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // align-self: flex-end
-    justify-self: center;
-    margin-top: 3.5rem;
-    margin-left: 1rem;
   }
 }
