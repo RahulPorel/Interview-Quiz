@@ -24,12 +24,14 @@ function InputBtnComponent({ isNameFilledEnter, form, setForm }) {
           aria-label="Enter Your Name"
           aria-describedby="your-name"
         />
-        <Button
-          onClick={handleSaveName}
-          variant={showSavedMsg ? "success" : "dark"}
-        >
-          {showSavedMsg ? "Saved" : "Not Saved"}
-        </Button>
+        <div className="hideSaveNaminM">
+          <Button
+            onClick={handleSaveName}
+            variant={showSavedMsg ? "success" : "dark"}
+          >
+            {showSavedMsg ? "Saved" : "Not Saved"}
+          </Button>
+        </div>
       </InputGroup>
     </>
   );

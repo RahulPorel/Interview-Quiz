@@ -93,15 +93,18 @@ const WelcomeInput = ({
             defaultValue={15}
             onChange={handleTimerDurationSliderCh}
           />
+
+          <br />
         </>
       )}
-      <br />
-      <Button
-        onClick={handleGenerateQuestions}
-        variant={isNameFilledEnter ? "danger" : "success"}
-      >
-        Generate Questions
-      </Button>
+      <div className="genBtnM">
+        <Button
+          onClick={handleGenerateQuestions}
+          variant={isNameFilledEnter ? "danger" : "success"}
+        >
+          Generate Questions
+        </Button>
+      </div>
 
       <div className="footer-welcome">
         <p>Selected Questions: {silderVal}</p>
