@@ -1,9 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Quiz from "./components/Quiz/Quiz";
 import WelcomeInput from "./components/WelcomeUser/WelcomeInput";
 import { qnaList } from "./utils/qnaList";
 
 function App() {
+  // const [questions, setQuestions] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/api/questions")
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch data");
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       setQuestions(data);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       setError(error);
+  //       setLoading(false);
+  //     });
+  // }, []);
+  // console.log(questions);
   const [isUserLogged, setIsUserLogged] = useState(null);
   const [silderVal, setSilderVal] = useState(24);
   const [userTimerDuration, setUserTimerDuration] = useState(15);
