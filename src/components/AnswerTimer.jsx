@@ -6,8 +6,9 @@ const AnswerTimer = ({
   onTimeUp,
   counter,
   setCounter,
+  progressLoaded,
+  setProgressLoaded,
 }) => {
-  const [progressLoaded, setProgressLoaded] = useState(0);
   const intervalRef = useRef();
 
   useEffect(() => {

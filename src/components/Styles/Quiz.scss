@@ -77,7 +77,7 @@ $foreground: #000000;
     padding: 10px 42px;
     outline: none;
     border: none;
-    margin-top: 15px;
+    margin-top: -35px;
     cursor: pointer;
 
     &:disabled {
@@ -185,4 +185,34 @@ $foreground: #000000;
 }
 .highest-score {
   color: #2ebe02;
+}
+.footer-timer {
+  font-size: 30px;
+  font-weight: 500;
+}
+.footer-timer-dur {
+  font-size: 20px;
+}
+.down-footer-timer-container {
+  margin-top: 45px;
+  text-align: center;
+}
+.stats {
+  display: flex;
+  margin-top: 0;
+  margin-bottom: -99px;
+  text-align: right;
+
+  background: rgb(131, 5, 189);
+  border-radius: 9px;
+  font-weight: 550;
+  font-size: 18px;
+  color: $bg;
+  padding: 10px 25px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.space-below {
+  margin-bottom: 2.5rem;
 }

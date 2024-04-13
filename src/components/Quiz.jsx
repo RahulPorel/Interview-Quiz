@@ -29,6 +29,9 @@ const Quiz = ({
   const [highestScore, setHighestScore] = useState(
     localStorage.getItem("highestScore") || 0
   );
+  const [showStats, setShowStats] = useState(true);
+  const [progressLoaded, setProgressLoaded] = useState(0);
+
   const [showAnsTimer, setShowAnsTimer] = useState(true);
 
   useEffect(() => {
@@ -93,6 +96,10 @@ const Quiz = ({
     }
   };
 
+  const handleShowStats = () => {
+    setShowStats(!showStats);
+  };
+
   const handleNextQuestion = (finalAns) => {
     setAnswerIndex(null);
     setShowAnsTimer(false);
@@ -148,6 +155,8 @@ const Quiz = ({
         <>
           {showAnsTimer && (
             <AnswerTimer
+              progressLoaded={progressLoaded}
+              setProgressLoaded={setProgressLoaded}
               duration={duration}
               onTimeUp={handleTimeUp}
               setCounter={setCounter}
@@ -155,36 +164,43 @@ const Quiz = ({
             />
           )}
 
-          {showCrrWrBtn ? (
-            <Button
-              className="default-styles-showLvlStatusBtn"
-              variant="warning"
-            >
-              {showLvlSelectedMsg}
-            </Button>
-          ) : (
-            <Button
-              className="default-styles-showLvlStatusBtn"
-              variant="warning"
-            >
-              {showLvlSelectedMsg}
-            </Button>
-          )}
+          {showStats ? (
+            <>
+              <div className="hideit-dummydiv">
+                {showCrrWrBtn ? (
+                  <Button
+                    className="default-styles-showLvlStatusBtn"
+                    variant="warning"
+                  >
+                    {showLvlSelectedMsg}
+                  </Button>
+                ) : (
+                  <Button
+                    className="default-styles-showLvlStatusBtn"
+                    variant="warning"
+                  >
+                    {showLvlSelectedMsg}
+                  </Button>
+                )}
+              </div>
 
-          <div className="answer-wr-cr-status">
-            {showCrrWrBtn ? (
-              <Button
-                className={ans ? "crrAnsStatus" : "wrongAnsStatus"}
-                variant={!ans ? "danger" : "success"}
-              >
-                {showCrrAnsMsg}
-              </Button>
-            ) : (
-              <Button className="crrAnsStatus" variant={"success"}>
-                Answer Satatus
-              </Button>
-            )}
-          </div>
+              <div className="answer-wr-cr-status">
+                {showCrrWrBtn ? (
+                  <Button
+                    className={ans ? "crrAnsStatus" : "wrongAnsStatus"}
+                    variant={!ans ? "danger" : "success"}
+                  >
+                    {showCrrAnsMsg}
+                  </Button>
+                ) : (
+                  <Button className="crrAnsStatus" variant={"success"}>
+                    Answer Satatus
+                  </Button>
+                )}
+              </div>
+            </>
+          ) : null}
+
           <div className="noOFQ">
             <span className="active-question-no">{currQuestions + 1}</span>
             <span className="total-question"> / {AllQuestions.length}</span>
@@ -199,27 +215,34 @@ const Quiz = ({
               </span>
             </h3>
           </div>
-          <h6 className="crr-ans-score">
-            {" "}
-            Correct Answers:
-            <span className="result-crr">{result.correctAnswer}</span>
-          </h6>
-          <h6 className="wrong-ans-score">
-            Wrong Answers:
-            <span className="result-wrong"> {result.wrongAnswer}</span>
-          </h6>
-          <h6 className="curr-score">
-            Current Score:
-            <span className="current-score"> {result.score}</span>
-          </h6>
-          <h6 className="prev-score">
-            Highest Score:
-            <span
-              className={highestScore > result.score ? "highest-score" : null}
-            >
-              {highestScore}
-            </span>
-          </h6>
+
+          {showStats ? (
+            <>
+              <h6 className="crr-ans-score">
+                {" "}
+                Correct Answers:
+                <span className="result-crr">{result.correctAnswer}</span>
+              </h6>
+              <h6 className="wrong-ans-score">
+                Wrong Answers:
+                <span className="result-wrong"> {result.wrongAnswer}</span>
+              </h6>
+              <h6 className="curr-score">
+                Current Score:
+                <span className="current-score"> {result.score}</span>
+              </h6>
+              <h6 className="prev-score">
+                Highest Score:
+                <span
+                  className={
+                    highestScore > result.score ? "highest-score" : null
+                  }
+                >
+                  {highestScore}
+                </span>
+              </h6>
+            </>
+          ) : null}
 
           {currentQuestion ? (
             <>
@@ -229,7 +252,7 @@ const Quiz = ({
                 Q{currQuestions + 1}: {questions}
               </h2>
 
-              <ul>
+              <ul className="space-below">
                 {choices.map((choice, index) => (
                   <li
                     key={choice}
@@ -240,7 +263,29 @@ const Quiz = ({
                   </li>
                 ))}
               </ul>
-
+              <button onClick={handleShowStats} className="stats">
+                {!showStats ? "Show Stats" : "Hide Stats"}
+              </button>
+              <div className="down-footer-timer-container">
+                <span
+                  className="timer footer-timer"
+                  style={{
+                    width: `${progressLoaded}%`,
+                    color: `${
+                      progressLoaded < 40
+                        ? "lightgreen"
+                        : progressLoaded < 70
+                        ? "orange"
+                        : "red"
+                    }`,
+                  }}
+                >
+                  {counter}{" "}
+                  <span className="footer-timer-dur" style={{ color: "white" }}>
+                    / {duration}
+                  </span>
+                </span>
+              </div>
               <div className="footer">
                 <button
                   className="nextQuestionBtn"
@@ -256,9 +301,6 @@ const Quiz = ({
           ) : (
             <div>No questions available</div>
           )}
-          <span className="timer">
-            {counter} / {duration}
-          </span>
         </>
       ) : (
         <div className="result">

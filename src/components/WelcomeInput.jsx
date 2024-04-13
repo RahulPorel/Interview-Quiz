@@ -40,7 +40,8 @@ const WelcomeInput = ({
     }
   };
 
-  console.log(isExtremeBtnClicked);
+  console.log(userTimerDuration);
+  console.log(duration);
 
   return (
     <div>
