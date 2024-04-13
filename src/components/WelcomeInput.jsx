@@ -20,6 +20,9 @@ const WelcomeInput = ({
   handleTimerDurationSliderCh,
   userTimerDuration,
   setUserTimerDuration,
+
+  isExtremeBtnClicked,
+  setIsExtremeBtnClicked,
 }) => {
   const [isBasicClicked, setIsBasicClicked] = useState(false);
   const [isMediumClicked, setIsMediumClicked] = useState(false);
@@ -37,6 +40,8 @@ const WelcomeInput = ({
     }
   };
 
+  console.log(isExtremeBtnClicked);
+
   return (
     <div>
       <h2>Welcome to Interview Prepartion</h2>
@@ -50,7 +55,12 @@ const WelcomeInput = ({
       />
 
       <p>Selected Questions: {silderVal}</p>
-      <p>Selected Durations: {userTimerDuration ? duration : 15}</p>
+      {isExtremeBtnClicked ? (
+        <p>Selected Durations: {userTimerDuration || 15}</p>
+      ) : (
+        <p>Selected Durations: {userTimerDuration ? duration : 15}</p>
+      )}
+
       <QnaDropDown
         setDuration={setDuration}
         duration={duration}
@@ -63,6 +73,8 @@ const WelcomeInput = ({
         setSelectedLvl={setSelectedLvl}
         handleTimerDurationSliderCh={handleTimerDurationSliderCh}
         setUserTimerDuration={setUserTimerDuration}
+        isExtremeBtnClicked={isExtremeBtnClicked}
+        setIsExtremeBtnClicked={setIsExtremeBtnClicked}
       />
 
       {isExtremeClicked && (

@@ -38,7 +38,7 @@ const Quiz = ({
       localStorage.setItem("highestScore", result.score);
     }
   }, [result.score]);
-  console.log(userTimerDuration);
+
   const greetings = {
     morning: "Good morning",
     afternoon: "Good afternoon",
@@ -201,25 +201,24 @@ const Quiz = ({
           </div>
           <h6 className="crr-ans-score">
             {" "}
-            Correct Answers:{" "}
+            Correct Answers:
             <span className="result-crr">{result.correctAnswer}</span>
           </h6>
           <h6 className="wrong-ans-score">
-            Wrong Answers:{" "}
+            Wrong Answers:
             <span className="result-wrong"> {result.wrongAnswer}</span>
           </h6>
           <h6 className="curr-score">
-            Current Score:{" "}
+            Current Score:
             <span className="current-score"> {result.score}</span>
           </h6>
           <h6 className="prev-score">
-            {" "}
-            Highest Score:{" "}
+            Highest Score:
             <span
               className={highestScore > result.score ? "highest-score" : null}
             >
               {highestScore}
-            </span>{" "}
+            </span>
           </h6>
 
           {currentQuestion ? (
@@ -236,9 +235,6 @@ const Quiz = ({
                     key={choice}
                     onClick={() => onAnswerClick(choice, index)}
                     className={answerIndex === index ? "selected-answer" : null}
-                    // className={`${
-                    //   answerIndex === index ? "selected-answer" : ""
-                    // } ${showUserCrrAns ? "correct-answer" : ""}`}
                   >
                     {choice}
                   </li>
@@ -284,8 +280,8 @@ const Quiz = ({
           </p>
           <button onClick={handleTryAgain} className=" tryAgainBtn">
             Try Again
-          </button>{" "}
-          <br />
+          </button>
+
           <button onClick={handTryAsFresh} className=" tryAgainBtn">
             Restart
           </button>

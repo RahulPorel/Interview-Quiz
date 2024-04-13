@@ -15,19 +15,22 @@ function QnaDropDown({
   duration,
 
   handleTimerDurationSliderCh,
-  setUserTimerDuration
+  setUserTimerDuration,
+  isExtremeBtnClicked,
+  setIsExtremeBtnClicked,
 }) {
-
-
   const handleBasicLevelBtn = () => {
     console.log("bas");
     setDuration(60);
     setSilderVal(24);
+    setIsExtremeBtnClicked(false);
+
     setIsExtremeClicked(false);
     setIsBasicClicked(true);
   };
   const handleMediumLevelBtn = () => {
     setDuration(45);
+    setIsExtremeBtnClicked(false);
 
     setIsExtremeClicked(false);
     setSilderVal(48);
@@ -35,14 +38,15 @@ function QnaDropDown({
   };
   const handleHardLevelBtn = () => {
     setDuration(25);
+    setIsExtremeBtnClicked(false);
 
     setIsExtremeClicked(false);
     setSilderVal(96);
     setIsHardClicked(true);
   };
   const handleExtremeLevelBtn = () => {
+    setIsExtremeBtnClicked(!isExtremeBtnClicked);
     setDuration(15);
-
     setIsExtremeClicked(true);
   };
 

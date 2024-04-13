@@ -15,6 +15,7 @@ function App() {
   });
   const [selectedLvl, setSelectedLvl] = useState("");
   const [duration, setDuration] = useState(0);
+  const [isExtremeBtnClicked, setIsExtremeBtnClicked] = useState(false);
   const handleSliderChange = (val) => {
     setSilderVal(val);
   };
@@ -22,7 +23,7 @@ function App() {
   const handleTimerDurationSliderCh = (val) => {
     setUserTimerDuration(val);
   };
-
+  console.log(userTimerDuration);
   return (
     <>
       {!isUserLogged ? (
@@ -41,6 +42,8 @@ function App() {
           handleTimerDurationSliderCh={handleTimerDurationSliderCh}
           userTimerDuration={userTimerDuration}
           setUserTimerDuration={setUserTimerDuration}
+          isExtremeBtnClicked={isExtremeBtnClicked}
+          setIsExtremeBtnClicked={setIsExtremeBtnClicked}
         />
       ) : (
         <Quiz
