@@ -50,7 +50,7 @@ const WelcomeInput = ({
       />
 
       <p>Selected Questions: {silderVal}</p>
-      <p>Selected Durations: {userTimerDuration}</p>
+      <p>Selected Durations: {userTimerDuration ? duration : 15}</p>
       <QnaDropDown
         setDuration={setDuration}
         duration={duration}
@@ -61,7 +61,6 @@ const WelcomeInput = ({
         setSilderVal={setSilderVal}
         selectedLvl={selectedLvl}
         setSelectedLvl={setSelectedLvl}
-
         handleTimerDurationSliderCh={handleTimerDurationSliderCh}
         setUserTimerDuration={setUserTimerDuration}
       />
